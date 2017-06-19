@@ -1,38 +1,34 @@
 $(document).ready(function(){
 
 $('#timer').hide();
-var count = 30;
+var count = 25;
 var correctCount = 0;
 var incorrectCount = 0;
 var unanswered = 0;
 $('#questionContainer').hide();
 $('#submit').hide();
-$('#scores').hide();
 var myForm = $('#questionForm');
-
-
-
-
+var counter;
 var questions = [{
-    question: "What is 2*5?",
-    choices: [2, 5, 10, 15, 20],
-    correctAnswer: 10
+    question: "In what place was Christmas once illegal?",
+    choices: ['Russia', 'Brazil', 'England', 'France'],
+    correctAnswer: 'England'
   }, {
-    question: "What is 3*6?",
-    choices: [3, 6, 9, 12, 18],
-    correctAnswer: 18
+    question: "Coulrophobia means fear of what?",
+    choices: ['Old People', 'Clowns', 'Sacred Things', 'Jews'],
+    correctAnswer: 'Clowns'
   }, {
-    question: "What is 8*9?",
-    choices: [72, 99, 108, 134, 156],
-    correctAnswer: 72
+    question: "Which of the following is the longest running American animated TV show?",
+    choices: ['TV Funhouse', 'Rugrats', 'Simpsons', 'Pokemon'],
+    correctAnswer: 'Simpsons'
   }, {
-    question: "What is 1*7?",
-    choices: [4, 5, 6, 7, 8],
-    correctAnswer: 7
+    question: "Every year, over 8,800 people injure themselves with what apparently harmless, tiny object?",
+    choices: ['Toothpick', 'Knife', 'Baseball bat', 'Pencil'],
+    correctAnswer: 'Toothpick'
   }, {
-    question: "What is 8*8?",
-    choices: [20, 30, 40, 50, 64],
-    correctAnswer: 64
+    question: "What is the fear of houses?",
+    choices: ['Rhabdophobia', 'Neophobia', 'Oikophobia', 'Jedeophobia'],
+    correctAnswer: 'Oikophobia'
   }];
 
 
@@ -41,39 +37,30 @@ var questions = [{
 
 		$('#startBtn').on('click', function(){
 			$('#startBtn').hide();
+			$('#timer').show();
+			$('#questionContainer').show();
+			$('#submit').show();
+
 			timer();
 		});
 
 		myForm.on("submit", onSubmit);
 
+		$('#scores').hide();
 	}
 
 
 
 
 	function timer(){
+		$('#timer').html("Time Remaining: " + count + " seconds");
 
-			var counter = setTimeout(timer, 1000);
-
-
-			$('#timer').show();
-
-			$('#questionContainer').show();
-
-			$('#submit').show();
-
-			$('#scores').show();
-
-			
-			
-			if (count <= 0) {
-				clearTimeout(counter);
-				return;
-
-			} else {
-				$('#timer').html("Time Remaining: " + count + " seconds");
-				count--;
-			}
+		if (count <= 0) {
+			onSubmit();
+		} else {
+			count--;
+			counter = setTimeout(timer, 1000);
+		}
 	}
 
 
@@ -103,7 +90,9 @@ var questions = [{
 	}
 	
 	function onSubmit(){
-		 for (var i = 0; i < questions.length; i ++) {
+		clearTimeout(counter);
+
+		for (var i = 0; i < questions.length; i ++) {
 
 		 	console.log("questions", questions[i].correctAnswer);
 		 	console.log("value", myForm[0]['q_' + i].value);
@@ -112,26 +101,24 @@ var questions = [{
 		 		unanswered++;
 		 		$('#unansweredScore').html(unanswered);
 		 	}
-
 			else if (questions[i].correctAnswer == myForm[0]['q_' + i].value) {
 				correctCount++;
 				$('#correctScore').html(correctCount);
 			}
-
 			else {
-
 				incorrectCount++;
 				$('#incorrectScore').html(incorrectCount);
 			}
-
 			
-
 		}
-		
 
+		$('#submit').hide();
+		$('#questionContainer').hide();
+		$('#scores').show();
 		return false;
 
 	}
+
 	
 	
 displayQuestions();
