@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 $('#timer').hide();
-var count = 25;
+var count = 35;
 var correctCount = 0;
 var incorrectCount = 0;
 var unanswered = 0;
@@ -10,25 +10,29 @@ $('#submit').hide();
 var myForm = $('#questionForm');
 var counter;
 var questions = [{
-    question: "In what place was Christmas once illegal?",
-    choices: ['Russia', 'Brazil', 'England', 'France'],
-    correctAnswer: 'England'
+    question: "1. This X-Man has the ability to spawn portals to teleport objects and people virtually anywhere.",
+    choices: [' Cable', ' Pipeline', ' Nightcrawler', ' Blink'],
+    correctAnswer: ' Blink'
   }, {
-    question: "Coulrophobia means fear of what?",
-    choices: ['Old People', 'Clowns', 'Sacred Things', 'Jews'],
-    correctAnswer: 'Clowns'
+    question: "2. This X-Man has the power to absorb and store any form energy, which he/she can then release at will.",
+    choices: [' Gambit', ' Rogue', ' Sunfire', ' Bishop'],
+    correctAnswer: ' Bishop'
   }, {
-    question: "Which of the following is the longest running American animated TV show?",
-    choices: ['TV Funhouse', 'Rugrats', 'Simpsons', 'Pokemon'],
-    correctAnswer: 'Simpsons'
+    question: "3. Which of the following can NOT read minds?",
+    choices: [' Psylocke', ' Magneto', ' Professor X', ' Jean Gray'],
+    correctAnswer: ' Magneto'
   }, {
-    question: "Every year, over 8,800 people injure themselves with what apparently harmless, tiny object?",
-    choices: ['Toothpick', 'Knife', 'Baseball bat', 'Pencil'],
-    correctAnswer: 'Toothpick'
+    question: "4. This mutant is naturally impervious to Cyclops' optic blasts.",
+    choices: [' Juggernaut', ' Wolverine', ' Havok', ' Magneto'],
+    correctAnswer: ' Havok'
   }, {
-    question: "What is the fear of houses?",
-    choices: ['Rhabdophobia', 'Neophobia', 'Oikophobia', 'Jedeophobia'],
-    correctAnswer: 'Oikophobia'
+    question: "5. Before Logan became Wolverine he went by this name?",
+    choices: [' Longshot', ' Magneto', ' Weapon X', ' Maverick'],
+    correctAnswer: ' Weapon X'
+  }, {
+    question: "6. In what comic did Gambit make his first appearance?",
+    choices: [' Uncanny X-Men #266', ' Spider-Man #266', ' X-Factor #266', ' Uncanny X-men #260'],
+    correctAnswer: ' Uncanny X-Men #266'
   }];
 
 
@@ -53,7 +57,7 @@ var questions = [{
 
 
 	function timer(){
-		$('#timer').html("Time Remaining: " + count + " seconds");
+		$('#timer').html("Time: " + count + " seconds");
 
 		if (count <= 0) {
 			onSubmit();
@@ -70,9 +74,9 @@ var questions = [{
 		for (var i=0; i < questions.length; i++) {
 
 			var question_el = $('<p>').html(questions[i].question);
-	
+
 			var choices_el = $('<div>');
-	
+
 				questions[i].choices.forEach(function(choice) {
 					choices_el.append(
 						$('<label class="choice">')
@@ -88,7 +92,7 @@ var questions = [{
 				);
 		}
 	}
-	
+
 	function onSubmit(){
 		clearTimeout(counter);
 
@@ -109,7 +113,7 @@ var questions = [{
 				incorrectCount++;
 				$('#incorrectScore').html(incorrectCount);
 			}
-			
+
 		}
 
 		$('#submit').hide();
@@ -119,8 +123,8 @@ var questions = [{
 
 	}
 
-	
-	
+
+
 displayQuestions();
 startGame();
 

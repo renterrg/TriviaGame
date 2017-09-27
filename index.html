@@ -4,8 +4,10 @@
 	<title>Trivia</title>
 
 <!--CSS link-->
-
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Bangers|Oswald" rel="stylesheet">
+
 
 <!--Jquery link-->
 
@@ -16,27 +18,42 @@
 </head>
 <body>
 
-<h1>Trivia!</h1>
+	<div class="container-fluid">
 
-	<button id="startBtn">Start</button>
+		<h1 class="display-1" style="color: white; font-family: 'Bangers', cursive; padding-top: 40px;">
+			X-Men Trivia!
+		</h1>
 
-	<span id="timer"></span>
-	<br><br>
+		<button data-toggle="tooltip" data-placement="top" title="Click!" id="startBtn" style="color: white; font-family: 'Bangers', cursive; padding-top: 40px;">
+			Start
+		</button>
 
-		<form id="questionForm">
-			<div id="questionContainer"></div>
-			<br>
-			<button id="submit">Submit Answers</button>
-		</form>
+		<div class="col-12">
+			<div class="row">
 
-	<br><br>
+				<div class="col-7">
+					<form id="questionForm">
+						<div id="questionContainer"></div>
+						<button id="submit">Submit Answers</button>
+					</form>
+				</div>
+
+				<div class="col-4" style="margin-top: 18em">
+					<span id="timer"></span>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
 
 		<div id="scores">
-			Correct: <span id="correctScore"></span>
+			Correct: <span id="correctScore">0</span>
 			<br>
-			Incorrect: <span id="incorrectScore"></span>
+			Incorrect: <span id="incorrectScore">0</span>
 			<br>
-			Unanswered: <span id="unansweredScore"></span>
+			Unanswered: <span id="unansweredScore">0</span>
 		</div>
 
 
